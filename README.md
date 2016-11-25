@@ -2,6 +2,8 @@
 
 基于61PHP+Layui开发的MVC结构的纯净版后台，仅有基础的登录以及权限管理等功能，方便二次开发
 
+##在线演示
+[http://www.zhoupengyu.cn/cms](http://www.zhoupengyu.cn/cms)
 ##相关截图
 <img src='http://www.zhoupengyu.cn/images/cut.png'>
 ##有问题反馈
