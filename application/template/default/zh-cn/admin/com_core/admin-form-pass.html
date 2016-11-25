@@ -1,0 +1,63 @@
+<link rel="stylesheet" href="<{$template_dir}>admin/css/select2.css" />
+<script src="<{$template_dir}>admin/js/jquery.uniform.js"></script>
+<script src="<{$template_dir}>admin/js/select2.min.js"></script>
+<script src="<{$template_dir}>admin/js/61.select.3.js"></script>
+<div id="content">
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="?m=admin&t=main" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> 后台首页</a> <a href="#">系统设定</a> <a href="#" class="current">修改密码</a> </div>
+  </div>
+  <div class="container-fluid"><hr>
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-pencil"></i> </span>
+            <h5>修改密码</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <form id="form-wizard" class="form-horizontal" method="post" action="?m=admin&t=savePass&id=<{$gvar.fget.id}>">
+              <div id="form-wizard-1" class="step">
+                <div class="control-group">
+                  <label class="control-label">用户名</label>
+                  <div class="controls">
+
+                  	<{$data.username}>
+                  
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label">密码</label>
+                  <div class="controls">
+                    <input id="password" type="password" name="password"/>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label">密码验证</label>
+                  <div class="controls">
+                    <input id="password2" type="password" name="password2" />
+                  </div>
+                </div>
+              </div>
+              
+              <div class="control-group">
+                  <label class="control-label">群组</label>
+                  <div class="controls">
+                    
+                      <{section name=list loop=$group}>
+                      	<{if $group[list].id==$data.gid}><{$group[list].title}><{/if}>
+                      <{/section}>
+                  </div>
+                </div>
+              
+             
+              <div class="form-actions">
+                <input id="next" class="btn btn-primary" type="submit" value="保存" />
+                <div id="status"></div>
+              </div>
+              <div id="submitted"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

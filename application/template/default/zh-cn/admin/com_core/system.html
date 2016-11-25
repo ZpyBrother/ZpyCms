@@ -1,0 +1,177 @@
+<!--<script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp&key=<{$data.map_key}>"></script>
+<script type="text/javascript">
+       $(function(){
+		
+			var map = new qq.maps.Map(document.getElementById("container"), {
+            // 地图的中心地理坐标。
+				<{if $data.gps_x && $data.gps_y}>
+            	center: new qq.maps.LatLng(<{$data.gps_x}>,<{$data.gps_y}>)
+				<{else}>
+				center: new qq.maps.LatLng(39.916527,116.397128)
+				
+				<{/if}>
+				//zoom:<{$data.gps_z}>
+        	});
+			map.zoomTo(15);
+			
+		   	qq.maps.event.addListener(map, "click", function (e) {
+				$('#gps_x').val(e.latLng.getLat().toFixed(6));
+				$('#gps_y').val(e.latLng.getLng().toFixed(6));
+				$('#gps_z').val(map.getZoom());
+				marker.setMap(null);
+				center = new qq.maps.LatLng($('#gps_x').val(), $('#gps_y').val());
+				marker = new qq.maps.Marker({
+                //设置Marker的位置坐标
+					position: center,
+					//设置显示Marker的地图
+					map: map
+            	});
+			})
+			
+			<{if $data.gps_x && $data.gps_y}>
+				var center = new qq.maps.LatLng(<{$data.gps_x}>, <{$data.gps_y}>);
+			<{else}>
+				var center = new qq.maps.LatLng(39.916527,116.397128);
+			
+			<{/if}>
+			var marker = new qq.maps.Marker({
+                //设置Marker的位置坐标
+                position: center,
+                //设置显示Marker的地图
+                map: map
+            });
+			
+		})
+</script>-->
+<style type="text/css">
+#container {
+	width: 100%;
+	float:left; margin:20px 0 0 0;
+}
+</style>
+<div id="content">
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="index.php?m=admin&t=main" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> 后台首页</a> <a href="#">系统设定</a> <a href="#" class="current">系统环境变量</a> </div>
+  </div>
+  <div class="container-fluid"><hr>
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-pencil"></i> </span>
+            <h5>系统环境变量设置</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <form id="form-wizard" class="form-horizontal" method="post" action="?m=admin&t=saveConfig" enctype="multipart/form-data">
+              <div id="form-wizard-1" class="step">
+                <div class="control-group">
+                  <label class="control-label">网站标题</label>
+                  <div class="controls">
+                    <input id="title" type="text" name="title" value="<{$data.title}>"/>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label">网站网址</label>
+                  <div class="controls">
+                    <input id="url" type="text" name="url" value="<{$data.url}>"/>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label">关键字</label>
+                  <div class="controls">
+                    <input id="keywords" type="text" name="keywords" value="<{$data.keywords}>"/>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label">描述</label>
+                  <div class="controls">
+                    <input id="description" type="text" name="description" value="<{$data.description}>"/>
+                  </div>
+                </div>
+                
+<!--                <div class="control-group">
+                  <label class="control-label">是否自动播放音乐</label>
+                  <div class="controls">
+                   <input name="is_auto_play" type="radio" value="1" <{if $data.is_auto_play}>checked="checked"<{/if}>/>是  <input name="is_auto_play" type="radio" value="0"  <{if !$data.is_auto_play}>checked="checked"<{/if}>/>否
+                  </div>
+                </div>-->
+                
+          <!--      <div class="control-group">
+                  <label class="control-label">音乐上传</label>
+                  <div class="controls">
+                  	<input name="music_url" type="file" /> <{if $data.music_url}>
+                    	
+                    <{/if}>
+                  </div>
+                </div>
+                
+                
+                <div class="control-group">
+                  <label class="control-label">音乐地址</label>
+                  <div class="controls">
+                  	<input name="music_url" type="text" value="<{$data.music_url}>"/> 
+                  </div>
+                </div>
+                 <div class="control-group">
+                  <label class="control-label"></label>
+                  <div class="controls">
+                  	当音乐文件过大，无法上传，可直接输出音乐路径，或者网络音乐地址 
+                  </div>
+                </div>
+                -->
+                <!-- <div class="control-group">
+                  <label class="control-label">音乐试听</label>
+                  <div class="controls">
+                   <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="165" height="37" id="niftyPlayer1" align="">
+		 <param name=movie value="<{$template_dir}>music/niftyplayer.swf?file=<{$config.music_url}>&as=0">
+		 <param name=quality value=high>
+		 <param name=bgcolor value=#FFFFFF>
+		 <embed src="<{$template_dir}>music/niftyplayer.swf?file=<{$config.music_url}>&as=0" quality=high bgcolor=#FFFFFF width="165" height="37" name="niftyPlayer1" align="" type="application/x-shockwave-flash" swLiveConnect="true" pluginspage="http://www.macromedia.com/go/getflashplayer">
+		</embed>
+</object>
+                  </div>
+                </div>-->
+                
+             <!--   <div class="control-group">
+                  <label class="control-label">地图KEY</label>
+                  <div class="controls">
+                    <input id="map_key" type="text" name="map_key" value="<{$data.map_key}>"/>
+                  </div>
+                </div>
+                
+                
+                 <div class="control-group">
+                  <label class="control-label">地图设置</label>
+                  <div class="controls" id="">
+                    <div id="container" style="height:300px;"></div>
+                  </div>
+                  <input id="gps_x" type="hidden" name="gps_x" value="<{$data.gps_x}>"/>
+                  <input id="gps_y" type="hidden" name="gps_y" value="<{$data.gps_y}>"/>
+                  <input id="gps_z" type="hidden" name="gps_z" value="<{$data.gps_z}>"/>
+                </div>-->
+                 
+                
+                <div class="control-group">
+                  <label class="control-label">版权信息</label>
+                  <div class="controls">
+                    <{$data.copyright}>
+                  </div>
+                </div>
+                <!--<div class="control-group">
+                  <label class="control-label">网站开关</label>
+                  <div class="controls">
+                   <label><input name="web_open" type="radio" value="1" <{if $data.web_open==1}>checked="checked"<{/if}>/>开启</label><label> <input name="web_open" type="radio" value="2" <{if $data.web_open==2}>checked="checked"<{/if}>/>关闭</label>
+                  </div>
+                </div>-->
+              </div>
+              <div class="form-actions">
+                <input id="next" class="btn btn-primary" type="submit" value="保存设定" />
+                <div id="status"></div>
+              </div>
+              <div id="submitted"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

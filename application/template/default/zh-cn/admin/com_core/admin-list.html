@@ -1,0 +1,55 @@
+<div id="content">
+<div id="content-header">
+  <div id="breadcrumb"> <a href="?m=admin&t=main" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> 系统首页</a> <a href="#" class="current">管理员列表</a> </div>
+</div>
+<div class="container-fluid">
+  <hr>
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="widget-box">
+        <div class="widget-title"> <span class="icon"> <i class="icon-hand-right"></i> </span>
+          <h5>操作</h5>
+        </div>
+        <div class="widget-content"> <a href="?m=admin&t=adminForm" data-toggle="modal" class="btn btn-success">增加管理员</a> 
+        </div>
+      </div>
+      <form id="infoListForm" method="get" action="index.php?m=admin&o=user&t=userList">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+            <h5>管理员列表</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <table class="table table-bordered data-table">
+              <thead>
+                <tr>
+                  <th>编号</th>
+                  <th>用户名</th>
+                  <th>权限组</th>
+                  <th>最后登录</th>
+                  <th>登录时间</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+              <{section name=list loop=$datas}>
+              <tr class="gradeX">
+                <td><{$datas[list].id}></td>
+                <td><{$datas[list].username}></td>
+                <td><{$datas[list].group_title}></td>
+                <td><{$datas[list].loginip}></td>
+                <td><{$datas[list].logintime}></td>
+                <td class="txt_center"><a href="index.php?m=admin&t=adminForm&id=<{$datas[list].id}>">编辑</a> <a href="index.php?m=admin&t=delAdmin&id=<{$datas[list].id}>">删除</a></td>
+              </tr>
+              <{/section}>
+                </tbody>
+              
+            </table>
+            <{$page_menu}> </div>
+        </div>
+        <input type="hidden" name="m" value="admin" />
+        <input type="hidden" name="o" value="core" />
+        <input type="hidden" name="t" id="task" value="adminList" />
+      </form>
+    </div>
+  </div>
+</div>

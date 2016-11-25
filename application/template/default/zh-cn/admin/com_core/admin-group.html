@@ -1,0 +1,47 @@
+<div id="content">
+<div id="content-header">
+  <div id="breadcrumb"> <a href="?m=admin&t=main" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> 系统首页</a> <a href="#" class="current">管理员群组</a> </div>
+</div>
+<div class="container-fluid">
+  <hr>
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="widget-box">
+        <div class="widget-title"> <span class="icon"> <i class="icon-hand-right"></i> </span>
+          <h5>操作</h5>
+        </div>
+        <div class="widget-content"> <a href="?m=admin&t=groupForm" data-toggle="modal" class="btn btn-success">增加群组</a> 
+        </div>
+      </div>
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+            <h5>群组列表</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <table class="table table-bordered data-table">
+              <thead>
+                <tr>
+                  <th>编号</th>
+                  <th>群组名</th>
+                  <th>描述</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+              <{section name=list loop=$datas}>
+              <tr class="gradeX">
+                <td><{$datas[list].id}></td>
+                <td><{$datas[list].title}></td>
+                <td><{$datas[list].note}></td>
+                <td class="txt_center"><a href="index.php?m=admin&t=groupForm&id=<{$datas[list].id}>">编辑</a> <a href="index.php?m=admin&t=delGroup&id=<{$datas[list].id}>">删除</a></td>
+              </tr>
+              <{/section}>
+                </tbody>
+              
+            </table>
+</div>
+        </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,208 @@
+<{*下拉菜单样式*}>
+<link rel="stylesheet" href="<{$template_dir}>admin/css/select2.css" />
+<script src="<{$template_dir}>admin/js/jquery.uniform.js"></script> 
+<script src="<{$template_dir}>admin/js/select2.min.js"></script> 
+<script src="<{$template_dir}>admin/js/61.select.1.js"></script> 
+
+<!--<link rel="stylesheet" href="<{$template_dir}>admin/css/tree/css/demo.css" type="text/css">
+--><link rel="stylesheet" href="<{$template_dir}>admin/css/tree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+<script type="text/javascript" src="<{$template_dir}>admin/css/tree/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="<{$template_dir}>admin/css/tree/js/jquery.ztree.core-3.5.js"></script>
+	<!--  <script type="text/javascript" src="../../../js/jquery.ztree.excheck-3.5.js"></script>
+<script type="text/javascript" src="../../../js/jquery.ztree.exedit-3.5.js"></script>-->
+	<SCRIPT type="text/javascript">
+	    var jQuery_1_4_4 = $.noConflict(true);
+
+
+		<!--
+		var setting = {
+			
+			data: {
+				simpleData: {
+					enable: true
+				}
+			}
+		
+		};
+		
+		
+
+		var zNodes =[
+			
+			<{section name=list loop=$datas}>
+			{ id:<{$datas[list].id}>, pId:<{$datas[list].pid}>, name:"<{$datas[list].title}><{if $datas[list].status==2}>[禁用]<{/if}>" <{if $datas[list].pid==0}>,open:true<{/if}>,url:"index.php?m=admin&t=menuManager&id=<{$datas[list].id}>",target:"_top"<{if $datas[list].status==2}>,font:{'color':'red'}<{/if}>}<{if !$smarty.section.list.last}>,<{/if}>
+			<{/section}>
+		];
+		
+
+		jQuery_1_4_4(document).ready(function(){
+			 jQuery_1_4_4.fn.zTree.init(jQuery_1_4_4("#treeDemo"), setting, zNodes);
+			
+		});
+		
+		$(function(){
+			
+			$('#delete').click(function(){
+				if (confirm('您确定要删除？')){
+					 location.href="index.php?m=admin&t=delManagerMenu&id=<{$gvar.fget.id}>";
+				}
+			})
+		})
+		//-->
+	</SCRIPT>
+<style>
+#icon-span input{
+	width:40px
+}	
+	
+</style>
+<div id="content">
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="?m=admin&t=main" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> 后台首页</a> <a href="#" class="tip-bottom">系统设定</a> <a href="#" class="current">后台菜单管理</a> </div>
+    
+  </div>
+  <div class="container-fluid">
+    <hr>
+    <div class="row-fluid">
+      <div class="span6">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+            <h5>系统菜单</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <div class="zTreeDemoBackground left">
+				<ul id="treeDemo" class="ztree"></ul>
+			</div>
+          </div>
+        </div>
+      </div>
+      <div class="span6">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+            <h5>菜单设置</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <form action="index.php?m=admin&t=saveManagerMenu&id=<{$gvar.fget.id}>" method="post" class="form-horizontal">
+              <div class="control-group">
+                <label class="control-label">所属频道</label>
+                <div class="controls">
+                  <select name="pid">
+                    <option value="0">根频道</option>
+                    <{section name=list loop=$datas}>
+                    <{if !$datas[list].pid && $gvar.fget.id!=$datas[list].id}>
+                    <option value="<{$datas[list].id}>" <{if $datas[list].id==$data.pid}>selected="selected"<{/if}>><{$datas[list].title}></option>
+                    <{/if}>
+                    <{/section}>
+                  </select>
+                </div>
+              </div>
+              
+             <div class="control-group">
+                <label for="checkboxes" class="control-label">菜单标题</label>
+                <div class="controls">
+                  <input id="title" type="text" class="span10" name="title" value="<{$data.title}>"/>	
+                </div>
+              </div>
+              
+              
+              <div class="control-group">
+                <label for="checkboxes" class="control-label">连接URL</label>
+                <div class="controls">
+                  <input id="url" type="text" class="span10" name="url" value="<{$data.url}>"/>	
+                </div>
+              </div>
+              
+              
+              <div class="control-group">
+                <label for="checkboxes" class="control-label">排序</label>
+                <div class="controls">
+                  <input id="sort" type="text" name="sort" value="<{$data.sort|default:0}>"/>	
+                </div>
+              </div>
+              
+
+              
+              <div class="control-group">
+                <label class="control-label">启用状态</label>
+                <div class="controls">
+                  <label>
+                    <input type="radio" name="status" value="1" <{if $data.status==1}>checked="checked"<{/if}>/>
+                    开启</label>
+                  <label>
+                    <input type="radio" name="status" value="2" <{if $data.status==2}>checked="checked"<{/if}>/>
+                    关闭</label>
+                  
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label">可用权限</label>
+                <div class="controls">
+                  <label>
+                    <input type="checkbox" name="execute" value="1" <{if $data.execute==1}>checked="checked"<{/if}>/>
+                    执行(菜单显示)</label>
+                  <label>
+                    <input type="checkbox" name="select" value="1" <{if $data.select==1}>checked="checked"<{/if}>/>
+                    查询(列表)</label>
+                  <label>
+                    <input type="checkbox" name="insert" value="1" <{if $data.insert==1}>checked="checked"<{/if}>/>
+                    保存(添加与修改)</label>
+                  <label>
+                    <input type="checkbox" name="delete" value="1" <{if $data.delete==1}>checked="checked"<{/if}>/>
+                    删除
+                  </label>
+                  <label>
+                    <input type="checkbox" name="other" value="1" <{if $data.other==1}>checked="checked"<{/if}>/>
+                    其他(其它特殊功能)</label>
+                </div>
+              </div>
+              <div class="control-group">
+                <label for="checkboxes" class="control-label">菜单图标</label>
+                <div class="controls">
+                 <div class="icon-span" id='icon-span'>
+                      <li><a class="icon-home"></a><input type="radio" name="icon" value="icon-home" <{if $data.icon=="icon-home"}>checked="checked"<{/if}>/>
+                     </li><li><a class="icon-th-list"></a><input type="radio" name="icon" value="icon-th-list" <{if $data.icon=="icon-th-list"}>checked="checked"<{/if}>/>
+                      </li><li><a class="icon-tint"></a><input type="radio" name="icon" value="icon-tint" <{if $data.icon=="icon-tint"}>checked="checked"<{/if}>/>
+                     </li><li> <a class="icon-info-sign"></a><input type="radio" name="icon" value="icon-info-sign" <{if $data.icon=="icon-info-sign"}>checked="checked"<{/if}>/>
+                      </li><li><a class="icon-user"></a><input type="radio" name="icon" value="icon-user" <{if $data.icon=="icon-user"}>checked="checked"<{/if}>/>
+                      </li><li><a class="icon-check"></a><input type="radio" name="icon" value="icon-check" <{if $data.icon=="icon-check"}>checked="checked"<{/if}>/>
+                    </li><li><a class="icon-key"></a><input type="radio" name="icon" value="icon-key" <{if $data.icon=="icon-key"}>checked="checked"<{/if}>/>
+                    </li><li><a class="icon-envelope"></a><input type="radio" name="icon" value="icon-envelope" <{if $data.icon=="icon-envelope"}>checked="checked"<{/if}>/>
+                    </li><li><a class="icon-plus"></a><input type="radio" name="icon" value="icon-plus" <{if $data.icon=="icon-plus"}>checked="checked"<{/if}>/>
+                    </li><li><a class="icon-trash"></a><input type="radio" name="icon" value="icon-trash" <{if $data.icon=="icon-trash"}>checked="checked"<{/if}>/>
+                    </li><li><a class="icon-cog"></a><input type="radio" name="icon" value="icon-cog" <{if $data.icon=="icon-cog"}>checked="checked"<{/if}>/>
+                    </li><li><a class="icon-share-alt"></a><input type="radio" name="icon" value="icon-share-alt" <{if $data.icon=="icon-share-alt"}>checked="checked"<{/if}>/>
+                    </li><li><a class="icon-search"></a><input type="radio" name="icon" value="icon-search" <{if $data.icon=="icon-search"}>checked="checked"<{/if}>/>
+                    </li><li><a class="icon-inbox"></a><input type="radio" name="icon" value="icon-inbox" <{if $data.icon=="icon-inbox"}>checked="checked"<{/if}>/>
+                   </li><li> <a class="icon-th"></a><input type="radio" name="icon" value="icon-th" <{if $data.icon=="icon-th"}>checked="checked"<{/if}>/>
+                   </li><li> <a class="icon-file"></a><input type="radio" name="icon" value="icon-file" <{if $data.icon=="icon-file"}>checked="checked"<{/if}>/>
+                    </li><li><a class="icon-group"></a><input type="radio" name="icon" value="icon-group" <{if $data.icon=="icon-group"}>checked="checked"<{/if}>/>
+                    </li><li><a class="icon-remove"></a><input type="radio" name="icon" value="icon-remove" <{if $data.icon=="icon-remove"}>checked="checked"<{/if}>/>
+                    </li><li><a class="icon-leaf"></a><input type="radio" name="icon" value="icon-leaf" <{if $data.icon=="icon-leaf"}>checked="checked"<{/if}>/>
+                    </li><li><a class="icon-signal"></a><input type="radio" name="icon" value="icon-signal" <{if $data.icon=="icon-signal"}>checked="checked"<{/if}>/>
+                   </li><li> <a class="icon-phone"></a><input type="radio" name="icon" value="icon-phone" <{if $data.icon=="icon-phone"}>checked="checked"<{/if}>/></li>     </div>
+                </div>
+              </div>
+
+              <!--<div class="control-group">
+                <label class="control-label">File upload input</label>
+                <div class="controls">
+                  <input type="file" />
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label">Disabled Input</label>
+                <div class="controls">
+                  <input type="text" placeholder="You can't type anything…" disabled="" class="span11">
+                </div>
+              </div>-->
+              <div class="form-actions">
+                <button type="submit" class="btn btn-success">保存</button>
+                <button type="button" id="delete" class="btn btn-success">删除</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
