@@ -17,3 +17,9 @@
 
 .w300 { width:300px;}
 .w400 { width:400px;}
+
+
+.container-fluid{	
+	margin-left:20px;
+	margin-right:20px;
+}

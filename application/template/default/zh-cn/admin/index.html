@@ -8,7 +8,11 @@
 
 <{*系统样式*}>
 <link rel="stylesheet" href="<{$template_dir}>admin/css/css.css" />
+
+<{if  !in_array($smarty.get.t,array('system','menuManager'))}>
 <link rel="stylesheet" href="<{$template_dir}>admin/css/bootstrap.min.css" />
+<{/if}>
+
 <link rel="stylesheet" href="<{$template_dir}>admin/css/bootstrap-responsive.min.css" />
 <link rel="stylesheet" href="<{$template_dir}>admin/css/matrix-style.css" />
 <link rel="stylesheet" href="<{$template_dir}>admin/css/matrix-media.css" />
@@ -31,6 +35,7 @@
 layui.use(['layer', 'element'], function(){
   var element = layui.element();
   var layer = layui.layer;
+  
  
 });
 

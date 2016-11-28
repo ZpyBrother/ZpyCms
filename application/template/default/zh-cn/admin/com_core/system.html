@@ -49,129 +49,98 @@
 	float:left; margin:20px 0 0 0;
 }
 </style>
-<div id="content">
+<div id="content" style="background-color:#ffffff">
   <div id="content-header">
     <div id="breadcrumb"> <a href="index.php?m=admin&t=main" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> 后台首页</a> <a href="#">系统设定</a> <a href="#" class="current">系统环境变量</a> </div>
   </div>
-  <div class="container-fluid"><hr>
-    <div class="row-fluid">
-      <div class="span12">
-        <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-pencil"></i> </span>
-            <h5>系统环境变量设置</h5>
-          </div>
-          <div class="widget-content nopadding">
-            <form id="form-wizard" class="form-horizontal" method="post" action="?m=admin&t=saveConfig" enctype="multipart/form-data">
-              <div id="form-wizard-1" class="step">
-                <div class="control-group">
-                  <label class="control-label">网站标题</label>
-                  <div class="controls">
-                    <input id="title" type="text" name="title" value="<{$data.title}>"/>
-                  </div>
-                </div>
-                <div class="control-group">
-                  <label class="control-label">网站网址</label>
-                  <div class="controls">
-                    <input id="url" type="text" name="url" value="<{$data.url}>"/>
-                  </div>
-                </div>
-                <div class="control-group">
-                  <label class="control-label">关键字</label>
-                  <div class="controls">
-                    <input id="keywords" type="text" name="keywords" value="<{$data.keywords}>"/>
-                  </div>
-                </div>
-                <div class="control-group">
-                  <label class="control-label">描述</label>
-                  <div class="controls">
-                    <input id="description" type="text" name="description" value="<{$data.description}>"/>
-                  </div>
-                </div>
-                
-<!--                <div class="control-group">
-                  <label class="control-label">是否自动播放音乐</label>
-                  <div class="controls">
-                   <input name="is_auto_play" type="radio" value="1" <{if $data.is_auto_play}>checked="checked"<{/if}>/>是  <input name="is_auto_play" type="radio" value="0"  <{if !$data.is_auto_play}>checked="checked"<{/if}>/>否
-                  </div>
-                </div>-->
-                
-          <!--      <div class="control-group">
-                  <label class="control-label">音乐上传</label>
-                  <div class="controls">
-                  	<input name="music_url" type="file" /> <{if $data.music_url}>
-                    	
-                    <{/if}>
-                  </div>
-                </div>
-                
-                
-                <div class="control-group">
-                  <label class="control-label">音乐地址</label>
-                  <div class="controls">
-                  	<input name="music_url" type="text" value="<{$data.music_url}>"/> 
-                  </div>
-                </div>
-                 <div class="control-group">
-                  <label class="control-label"></label>
-                  <div class="controls">
-                  	当音乐文件过大，无法上传，可直接输出音乐路径，或者网络音乐地址 
-                  </div>
-                </div>
-                -->
-                <!-- <div class="control-group">
-                  <label class="control-label">音乐试听</label>
-                  <div class="controls">
-                   <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="165" height="37" id="niftyPlayer1" align="">
-		 <param name=movie value="<{$template_dir}>music/niftyplayer.swf?file=<{$config.music_url}>&as=0">
-		 <param name=quality value=high>
-		 <param name=bgcolor value=#FFFFFF>
-		 <embed src="<{$template_dir}>music/niftyplayer.swf?file=<{$config.music_url}>&as=0" quality=high bgcolor=#FFFFFF width="165" height="37" name="niftyPlayer1" align="" type="application/x-shockwave-flash" swLiveConnect="true" pluginspage="http://www.macromedia.com/go/getflashplayer">
-		</embed>
-</object>
-                  </div>
-                </div>-->
-                
-             <!--   <div class="control-group">
-                  <label class="control-label">地图KEY</label>
-                  <div class="controls">
-                    <input id="map_key" type="text" name="map_key" value="<{$data.map_key}>"/>
-                  </div>
-                </div>
-                
-                
-                 <div class="control-group">
-                  <label class="control-label">地图设置</label>
-                  <div class="controls" id="">
-                    <div id="container" style="height:300px;"></div>
-                  </div>
-                  <input id="gps_x" type="hidden" name="gps_x" value="<{$data.gps_x}>"/>
-                  <input id="gps_y" type="hidden" name="gps_y" value="<{$data.gps_y}>"/>
-                  <input id="gps_z" type="hidden" name="gps_z" value="<{$data.gps_z}>"/>
-                </div>-->
-                 
-                
-                <div class="control-group">
-                  <label class="control-label">版权信息</label>
-                  <div class="controls">
-                    <{$data.copyright}>
-                  </div>
-                </div>
-                <!--<div class="control-group">
-                  <label class="control-label">网站开关</label>
-                  <div class="controls">
-                   <label><input name="web_open" type="radio" value="1" <{if $data.web_open==1}>checked="checked"<{/if}>/>开启</label><label> <input name="web_open" type="radio" value="2" <{if $data.web_open==2}>checked="checked"<{/if}>/>关闭</label>
-                  </div>
-                </div>-->
-              </div>
-              <div class="form-actions">
-                <input id="next" class="btn btn-primary" type="submit" value="保存设定" />
-                <div id="status"></div>
-              </div>
-              <div id="submitted"></div>
-            </form>
-          </div>
+  <div class="container-fluid" style=' margin-top:20px'>
+   
+     <fieldset class="layui-elem-field">
+      <legend>系统环境变量设置</legend>
+      <div class="layui-field-box">
+    <form class="layui-form layui-form-pane" action="index.php?m=admin&t=saveConfig" method="post">
+     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+      <legend>基本配置</legend>
+    </fieldset>
+      <div class="layui-form-item">
+        <label class="layui-form-label">网站标题</label>
+        <div class="layui-input-block">
+          <input type="text" name="title" value="<{$data.title}>"  lay-verify="required" autocomplete="off" placeholder="请输入网站标题" class="layui-input">
         </div>
       </div>
-    </div>
+      
+       <div class="layui-form-item">
+        <label class="layui-form-label">网站网址</label>
+        <div class="layui-input-block">
+          <input type="text" name="url" value="<{$data.url}>"  lay-verify="required" autocomplete="off" placeholder="请输入网站网址" class="layui-input">
+        </div>
+      </div>
+      
+       <fieldset class="layui-elem-field layui-field-title" >
+          <legend>SEO</legend>
+       </fieldset>
+      <div class="layui-form-item">
+        <label class="layui-form-label">关键字</label>
+        <div class="layui-input-block">
+          <input type="text" name="keywords" value="<{$data.keywords}>" lay-verify="required" autocomplete="off" placeholder="请输入关键字" class="layui-input">
+        </div>
+      </div>
+      
+       <div class="layui-form-item">
+        <label class="layui-form-label">描述</label>
+        <div class="layui-input-block">
+          <input type="text" name="description" value="<{$data.description}>" lay-verify="required" autocomplete="off" placeholder="请输入描述" class="layui-input">
+        </div>
+      </div>
+      <fieldset class="layui-elem-field layui-field-title" >
+          <legend>版权信息</legend>
+       </fieldset>
+      <{$data.copyright}>
+      <br><br>
+      <div class="layui-form-item">
+        <div class="layui-input-block">
+          <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+          <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+      </div>
+    </form>
+      </div>
+</fieldset>
   </div>
 </div>
+<script>
+layui.use(['form', 'layedit', 'laydate'], function(){
+  var form = layui.form()
+  ,layer = layui.layer
+  //,layedit = layui.layedit
+  //,laydate = layui.laydate;
+  
+  //创建一个编辑器
+  //var editIndex = layedit.build('LAY_demo_editor');
+ 
+  //自定义验证规则
+ /* form.verify({
+    title: function(value){
+      if(value.length < 5){
+        return '标题至少得5个字符啊';
+      }
+    }
+    ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+    ,content: function(value){
+      layedit.sync(editIndex);
+    }
+  });
+  
+  
+  
+  //监听提交
+  form.on('submit(demo1)', function(data){
+    layer.alert(JSON.stringify(data.field), {
+      title: '最终的提交信息'
+    })
+    return false;
+  });*/
+  
+  
+});
+</script>
