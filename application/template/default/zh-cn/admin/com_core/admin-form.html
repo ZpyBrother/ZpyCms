@@ -1,75 +1,90 @@
-<link rel="stylesheet" href="<{$template_dir}>admin/css/select2.css" />
-<script src="<{$template_dir}>admin/js/jquery.uniform.js"></script>
-<script src="<{$template_dir}>admin/js/select2.min.js"></script>
-<script src="<{$template_dir}>admin/js/61.select.3.js"></script>
-<div id="content">
+<div id="content" style="background-color:#ffffff">
   <div id="content-header">
     <div id="breadcrumb"> <a href="?m=admin&t=main" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> 后台首页</a> <a href="#">系统设定</a> <a href="#" class="current">系统账户</a> </div>
   </div>
-  <div class="container-fluid"><hr>
+  <div class="container-fluid">
     <div class="row-fluid">
-      <div class="span12">
-        <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-pencil"></i> </span>
-            <h5>管理员信息</h5>
-          </div>
-          <div class="widget-content nopadding">
-            <form id="form-wizard" class="form-horizontal" method="post" action="?m=admin&t=saveAdminData&id=<{$gvar.fget.id}>">
-              <div id="form-wizard-1" class="step">
-                <div class="control-group">
-                  <label class="control-label">用户名</label>
-                  <div class="controls">
-                  <{if $gvar.fget.id}>
-                  	<{$data.username}>
-                  <{else}>
-                    <input id="username" type="text" name="username" value="<{$data.username}>"/><br />
-				  <{/if}>
-                  </div>
-                </div>
-                <div class="control-group">
-                  <label class="control-label">密码</label>
-                  <div class="controls">
-                    <input id="password" type="password" name="password"/>
-                  </div>
-                </div>
-                <div class="control-group">
-                  <label class="control-label">密码验证</label>
-                  <div class="controls">
-                    <input id="password2" type="password" name="password2" />
-                  </div>
-                </div>
-              </div>
-              
-              <div class="control-group">
-                  <label class="control-label">群组</label>
-                  <div class="controls">
-                    <select name="gid" style="width:150px" class="select">
-                      <{section name=list loop=$group}> <option value="<{$group[list].id}>" <{if $group[list].id==$data.gid}>selected="selected"<{/if}>><{$group[list].title}>
-                      </option>
-                      <{/section}>
-                    </select>
-                  </div>
-                </div>
-              
-              <div id="form-wizard-2" class="step">
+      <fieldset class="layui-elem-field">
+      <legend>管理员信息</legend>
+      <div class="layui-field-box">
+ 
+     <form class="layui-form" style='width: 47%; margin-left: 2%;' action="?m=admin&t=saveAdminData&id=<{$gvar.fget.id}>" method="post">
     
-                <div class="control-group">
-                  <label class="control-label">状态</label>
-                  <div class="controls">
-					<input name="status" type="radio" value="1" <{if $data.status==1 || !$data.status}>checked="checked"<{/if}>/>启用 
-                    <input name="status" type="radio" value="2" <{if $data.status==2}>checked="checked"<{/if}>/>禁用                  
-                  </div>
-                </div>
-              </div>
-              <div class="form-actions">
-                <input id="next" class="btn btn-primary" type="submit" value="保存" />
-                <div id="status"></div>
-              </div>
-              <div id="submitted"></div>
-            </form>
+      <div class="layui-form-item">
+        <label class="layui-form-label">用户名</label>
+        <div class="layui-input-block">
+          <input type="text" name="username" value="<{$data.username}>" <{if $gvar.fget.id}>readonly<{/if}> lay-verify="required" autocomplete="off" placeholder="请输入用户名" class="layui-input">
+        </div>
+      </div>
+      
+       <div class="layui-form-item">
+        <label class="layui-form-label">密码</label>
+        <div class="layui-input-block">
+          <input type="password" name="password"  autocomplete="off" placeholder="请输入密码" class="layui-input">
+        </div>
+      </div>
+      
+     
+      <div class="layui-form-item">
+        <label class="layui-form-label">验证密码</label>
+        <div class="layui-input-block">
+          <input type="password" name="password2"  autocomplete="off" placeholder="请输入验证密码" class="layui-input">
+        </div>
+      </div>
+      
+       <div class="layui-form-item">
+        <label class="layui-form-label">群组</label>
+        <div class="layui-input-block">
+          <select name="gid" >
+            
+            <{section name=list loop=$group}> 
+            <option value="<{$group[list].id}>" <{if $group[list].id==$data.gid}>selected="selected"<{/if}>><{$group[list].title}></option>
+             <{/section}>
+          </select>
+        </div>
+      </div>
+     <div class="layui-form-item">
+        <label class="layui-form-label">状态</label>
+        <div class="layui-input-block">
+           <input type="radio" name="status" value="1" title="开启" <{if $data.status==1}>checked="checked"<{/if}>checked="checked">
+      	   <input type="radio" name="status" value="2" title="关闭" <{if $data.status==2}>checked="checked"<{/if}>>
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <div class="layui-input-block">
+          <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+          <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+      </div>
+    </form>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+         
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<script>
+layui.use(['form', 'layedit', 'laydate'], function(){
+  var form = layui.form()
+  ,layer = layui.layer
+ 
+  
+  
+});
+</script>

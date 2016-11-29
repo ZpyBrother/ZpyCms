@@ -124,12 +124,12 @@ CREATE TABLE `#__manager_menu` (
 ) ENGINE=MyISAM AUTO_INCREMENT=59 DEFAULT CHARSET=utf8;
 
 
-INSERT INTO `#__manager_menu` VALUES ('1', '系统设定', 'core', 'system', '1', '0', '1', '1', '1', '1', '1', '1', '100', 'icon-cog', 'index.php?m=admin&t=system');
-INSERT INTO `#__manager_menu` VALUES ('2', '系统环境设定', 'core', 'system', '1', '1', '1', '2', '1', '2', '2', '1', '99', 'icon-cog', 'index.php?m=admin&t=system');
-INSERT INTO `#__manager_menu` VALUES ('3', '菜单管理', 'core', 'menu', '2', '1', '1', '1', '1', '1', '1', '1', '1', 'icon-cog', 'index.php?m=admin&t=menu');
-INSERT INTO `#__manager_menu` VALUES ('4', '系统账户', 'core', 'adminList', '1', '1', '1', '1', '1', '1', '1', '1', '1', 'icon-cog', 'index.php?m=admin&t=adminList');
-INSERT INTO `#__manager_menu` VALUES ('5', '后台菜单', 'core', 'menuManager', '1', '1', '1', '1', '1', '1', '1', '1', '98', 'icon-cog', 'index.php?m=admin&t=menuManager');
-INSERT INTO `#__manager_menu` VALUES ('6', '管理员群组', 'core', 'group', '1', '1', '1', '1', '1', '1', '1', '1', '0', null, 'index.php?m=admin&o=core&t=group');
+
+INSERT INTO `#__manager_menu` (`id`, `title`, `op`, `task`, `link_type`, `pid`, `execute`, `select`, `insert`, `delete`, `other`, `status`, `sort`, `icon`, `url`) VALUES ('1', '系统设定', 'core', 'system', '1', '0', '1', '1', '1', '1', '1', '1', '100', 'icon-cog', 'index.php?m=admin&t=system');
+INSERT INTO `#__manager_menu` (`id`, `title`, `op`, `task`, `link_type`, `pid`, `execute`, `select`, `insert`, `delete`, `other`, `status`, `sort`, `icon`, `url`) VALUES ('2', '系统环境设定', 'core', 'system', '1', '1', '1', '2', '1', '2', '2', '1', '99', 'icon-home', 'index.php?m=admin&t=system');
+INSERT INTO `#__manager_menu` (`id`, `title`, `op`, `task`, `link_type`, `pid`, `execute`, `select`, `insert`, `delete`, `other`, `status`, `sort`, `icon`, `url`) VALUES ('3', '系统账户', 'core', 'adminList', '1', '1', '1', '1', '1', '1', '1', '1', '1', 'icon-user', 'index.php?m=admin&t=adminList');
+INSERT INTO `#__manager_menu` (`id`, `title`, `op`, `task`, `link_type`, `pid`, `execute`, `select`, `insert`, `delete`, `other`, `status`, `sort`, `icon`, `url`) VALUES ('4', '后台菜单', 'core', 'menuManager', '1', '1', '1', '1', '1', '1', '1', '1', '98', 'icon-th-list', 'index.php?m=admin&t=menuManager');
+INSERT INTO `#__manager_menu` (`id`, `title`, `op`, `task`, `link_type`, `pid`, `execute`, `select`, `insert`, `delete`, `other`, `status`, `sort`, `icon`, `url`) VALUES ('5', '管理员群组', 'core', 'group', '1', '1', '1', '1', '1', '1', '1', '1', '0', 'icon-group', 'index.php?m=admin&o=core&t=group');
 
 
 DROP TABLE IF EXISTS `#__page_class`;

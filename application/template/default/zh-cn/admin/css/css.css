@@ -1,5 +1,8 @@
 /*分页*/
-.sabrosus { text-align:center; font-size:12px; background:#fcfcfc; background-color:#eee; border-top:1px solid #ccc; padding:10px;}
+.sabrosus { text-align:center; font-size:12px; 
+/*background:#fcfcfc; background-color:#eee; border-top:1px solid #ccc; */
+
+padding:10px;}
 .sabrosus A { border:#bbb solid 1px; padding:5px; margin-right:5px;COLOR: #aaa; background-color:#fff}
 .sabrosus A:hover,.sabrosus SPAN.disabled_1:hover { border:#bbb solid 1px; background-color:#fff;}
 .pagination A:active { background-color:#fff }

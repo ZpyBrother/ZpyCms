@@ -9,9 +9,7 @@
 <{*系统样式*}>
 <link rel="stylesheet" href="<{$template_dir}>admin/css/css.css" />
 
-<{if  !in_array($smarty.get.t,array('system','menuManager'))}>
-<link rel="stylesheet" href="<{$template_dir}>admin/css/bootstrap.min.css" />
-<{/if}>
+
 
 <link rel="stylesheet" href="<{$template_dir}>admin/css/bootstrap-responsive.min.css" />
 <link rel="stylesheet" href="<{$template_dir}>admin/css/matrix-style.css" />
@@ -142,10 +140,10 @@ $(function(){
         <ul class="layui-nav layui-nav-tree">
             <{foreach $menu as $k=>$v}>
             <li class="layui-nav-item  <{if $v.is_select}>layui-nav-itemed<{/if}>">
-             <a href="#"><i class="icon <{$v.icon}>"></i><{$v.title}></a>
+             <a href="#"><i class="<{$v.icon}>"></i><{$v.title}></a>
               <dl class="layui-nav-child">
                 <{foreach $v.menu as $key=>$val}>
-                    <dd ><a  <{if $val.is_select}>style='color:#58eeff;'<{/if}> href="<{$val.url}>"><{$val.title}></a></dd>
+                    <dd <{if $val.is_select}>class='layui-this'<{/if}> ><a  href="<{$val.url}>"><i class="<{$val.icon}>"></i><{$val.title}></a></dd>
                 <{/foreach}>
                </dl>
             </li>
@@ -159,6 +157,7 @@ $(function(){
   
 </div>
 <div class="layui-body" style="bottom: 0;">
+
 	<{include file=$main_show_block}>
 </div>
 

@@ -111,6 +111,25 @@ class coreViewAdmin extends coreFrameworkView
 	function menuManager(){
 		$get=$this->GVar->fget;
 		$datas=$this->model->getManagerMenu();
+		
+		
+		foreach ($datas as $k=>$v){
+			if ($v['pid']==0) {
+				$tree[$k] = $v;
+				foreach($datas as $k1=>$v1){
+					if($v1['pid']==$v['id']){
+						$tree[$k]['children'][] = $v1;
+						
+					}
+				}
+				
+			}
+		}
+		
+		
+		
+		$this->tmp->assign('tree',$tree);
+		
 		if ($get['id']){
 			foreach ($datas as $v){
 				if ($v['id']==$get['id']) {
@@ -125,7 +144,9 @@ class coreViewAdmin extends coreFrameworkView
 		$this->tmp->assign("main_show_block","admin/com_core/admin-menu.html");
 		$this->createMenu();
 		//把区块发送到前
+		
 		$this->dp("admin/index");
+		echo 123;
 	}
 
 	function saveManagerMenu(){

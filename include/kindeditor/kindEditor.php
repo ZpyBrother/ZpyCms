@@ -12,7 +12,7 @@ class kindEditor
 	{
 		$this->InstanceName	= $instanceName ;
 		$this->BasePath		= '/kindeditor/' ;
-		$this->Width		= '90%' ;
+		$this->Width		= '100%' ;
 		$this->Height		= '200' ;
 		$this->ToolbarSet	= 'default' ;
 		$this->Value		= '' ;

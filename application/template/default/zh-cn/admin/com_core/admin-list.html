@@ -1,25 +1,19 @@
-<div id="content">
+<div id="content" style="background-color:#ffffff">
 <div id="content-header">
   <div id="breadcrumb"> <a href="?m=admin&t=main" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> 系统首页</a> <a href="#" class="current">管理员列表</a> </div>
 </div>
 <div class="container-fluid">
-  <hr>
+
   <div class="row-fluid">
-    <div class="span12">
-      <div class="widget-box">
-        <div class="widget-title"> <span class="icon"> <i class="icon-hand-right"></i> </span>
-          <h5>操作</h5>
-        </div>
-        <div class="widget-content"> <a href="?m=admin&t=adminForm" data-toggle="modal" class="btn btn-success">增加管理员</a> 
-        </div>
-      </div>
+  <blockquote class="layui-elem-quote layui-quote-nm">
+     <a href='?m=admin&t=adminForm' class="layui-btn">新增管理员</a>
+    </blockquote> 
+    <fieldset class="layui-elem-field layui-field-title">
+      <legend>管理员列表</legend>
+    </fieldset>
       <form id="infoListForm" method="get" action="index.php?m=admin&o=user&t=userList">
-        <div class="widget-box">
-          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
-            <h5>管理员列表</h5>
-          </div>
-          <div class="widget-content nopadding">
-            <table class="table table-bordered data-table">
+       
+            <table class="layui-table">
               <thead>
                 <tr>
                   <th>编号</th>
@@ -38,18 +32,19 @@
                 <td><{$datas[list].group_title}></td>
                 <td><{$datas[list].loginip}></td>
                 <td><{$datas[list].logintime}></td>
-                <td class="txt_center"><a href="index.php?m=admin&t=adminForm&id=<{$datas[list].id}>">编辑</a> <a href="index.php?m=admin&t=delAdmin&id=<{$datas[list].id}>">删除</a></td>
+                <td class="txt_center"><a href="index.php?m=admin&t=adminForm&id=<{$datas[list].id}>">编辑</a> 
+                <{if $datas[list].id!=1}><a href="index.php?m=admin&t=delAdmin&id=<{$datas[list].id}>">删除</a><{/if}></td>
               </tr>
               <{/section}>
                 </tbody>
               
             </table>
-            <{$page_menu}> </div>
-        </div>
+            <{$page_menu}>
+      
         <input type="hidden" name="m" value="admin" />
         <input type="hidden" name="o" value="core" />
         <input type="hidden" name="t" id="task" value="adminList" />
       </form>
-    </div>
+   </div>
   </div>
 </div>
