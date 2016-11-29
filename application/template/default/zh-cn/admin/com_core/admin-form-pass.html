@@ -1,63 +1,71 @@
-<link rel="stylesheet" href="<{$template_dir}>admin/css/select2.css" />
-<script src="<{$template_dir}>admin/js/jquery.uniform.js"></script>
-<script src="<{$template_dir}>admin/js/select2.min.js"></script>
-<script src="<{$template_dir}>admin/js/61.select.3.js"></script>
-<div id="content">
+<div id="content" style="background-color:#ffffff">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="?m=admin&t=main" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> 后台首页</a> <a href="#">系统设定</a> <a href="#" class="current">修改密码</a> </div>
+    <div id="breadcrumb"> <a href="?m=admin&t=main" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> 后台首页</a> <a href="#">系统设定</a> <a href="#" class="current">系统账户</a> </div>
   </div>
-  <div class="container-fluid"><hr>
+  <div class="container-fluid">
     <div class="row-fluid">
-      <div class="span12">
-        <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-pencil"></i> </span>
-            <h5>修改密码</h5>
-          </div>
-          <div class="widget-content nopadding">
-            <form id="form-wizard" class="form-horizontal" method="post" action="?m=admin&t=savePass&id=<{$gvar.fget.id}>">
-              <div id="form-wizard-1" class="step">
-                <div class="control-group">
-                  <label class="control-label">用户名</label>
-                  <div class="controls">
-
-                  	<{$data.username}>
-                  
-                  </div>
-                </div>
-                <div class="control-group">
-                  <label class="control-label">密码</label>
-                  <div class="controls">
-                    <input id="password" type="password" name="password"/>
-                  </div>
-                </div>
-                <div class="control-group">
-                  <label class="control-label">密码验证</label>
-                  <div class="controls">
-                    <input id="password2" type="password" name="password2" />
-                  </div>
-                </div>
-              </div>
-              
-              <div class="control-group">
-                  <label class="control-label">群组</label>
-                  <div class="controls">
-                    
-                      <{section name=list loop=$group}>
-                      	<{if $group[list].id==$data.gid}><{$group[list].title}><{/if}>
-                      <{/section}>
-                  </div>
-                </div>
-              
+      <fieldset class="layui-elem-field">
+      <legend>管理员信息</legend>
+      <div class="layui-field-box">
+ 
+     <form class="layui-form" style='width: 47%; margin-left: 2%;' action="?m=admin&t=savePass&id=<{$gvar.fget.id}>" method="post">
+    
+      <div class="layui-form-item">
+        <label class="layui-form-label">用户名</label>
+        <div class="layui-input-block">
+          <input type="text"  value="<{$data.username}>" readonly lay-verify="required" autocomplete="off" placeholder="请输入用户名" class="layui-input">
+        </div>
+      </div>
+      
+       <div class="layui-form-item">
+        <label class="layui-form-label">密码</label>
+        <div class="layui-input-block">
+          <input type="password" name="password"  autocomplete="off" placeholder="请输入密码" class="layui-input">
+        </div>
+      </div>
+      
+     
+      <div class="layui-form-item">
+        <label class="layui-form-label">验证密码</label>
+        <div class="layui-input-block">
+          <input type="password" name="password2"  autocomplete="off" placeholder="请输入验证密码" class="layui-input">
+        </div>
+      </div>
+      
+       <div class="layui-form-item">
+        <label class="layui-form-label">群组</label>
+        <div class="layui-input-block">
+          <select  disabled>
              
-              <div class="form-actions">
-                <input id="next" class="btn btn-primary" type="submit" value="保存" />
-                <div id="status"></div>
-              </div>
-              <div id="submitted"></div>
-            </form>
+            <{section name=list loop=$group}> 
+            <option value="<{$group[list].id}>" <{if $group[list].id==$data.gid}>selected="selected"<{/if}>><{$group[list].title}></option>
+             <{/section}>
+          </select>
+        </div>
+      </div>
+   
+      <div class="layui-form-item">
+        <div class="layui-input-block">
+          <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+          
+        </div>
+      </div>
+    </form>
+            
+            
+         
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<script>
+layui.use(['form', 'layedit', 'laydate'], function(){
+  var form = layui.form()
+  ,layer = layui.layer
+ 
+  
+  
+});
+</script>
