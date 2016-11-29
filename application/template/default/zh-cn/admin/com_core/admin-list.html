@@ -33,7 +33,7 @@
                 <td><{$datas[list].loginip}></td>
                 <td><{$datas[list].logintime}></td>
                 <td class="txt_center"><a href="index.php?m=admin&t=adminForm&id=<{$datas[list].id}>">编辑</a> 
-                <{if $datas[list].id!=1}><a href="index.php?m=admin&t=delAdmin&id=<{$datas[list].id}>">删除</a><{/if}></td>
+                <{if $datas[list].id!=1}><a class='del' href='javascript:;' d_href="index.php?m=admin&t=delAdmin&id=<{$datas[list].id}>">删除</a><{/if}></td>
               </tr>
               <{/section}>
                 </tbody>
@@ -48,3 +48,20 @@
    </div>
   </div>
 </div>
+<script>
+layui.use('layer',function(){
+	var layer = layui.layer;	
+	$(".del").click(function(){
+		var url = $(this).attr('d_href');
+		layer.confirm('您确定要删除？', {
+		  btn: ['确定','取消'] //按钮
+		}, function(){
+			 location.href=url;
+		}, function(){
+			layer.closeAll()
+		});	
+	
+	})
+	
+})
+</script>
